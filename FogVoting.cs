@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Oxide.Plugins
 {
-    [Info("Fog Voting", "Ultra", "1.1.1")]
+    [Info("Fog Voting", "Ultra", "1.1.2")]
     [Description("Initializes voting to remove fog from the environment")]
 
     class FogVoting : RustPlugin
@@ -99,7 +99,7 @@ namespace Oxide.Plugins
         [ChatCommand("checkfog")]
         void CheckFog(BasePlayer player, string command, string[] args)
         {
-            if (!isVotingOpen) return;
+            if (isVotingOpen) return;
             if (player.IsAdmin)
             {
                 CheckCurrentFog();
@@ -112,6 +112,8 @@ namespace Oxide.Plugins
 
         void CheckCurrentFog()
         {
+            DestroyTimer(fogCheckTimer);
+
             foreach (var player in BasePlayer.activePlayerList)
             {
                 if (Climate.GetFog(player.transform.position) > configData.FogLimit)
@@ -119,7 +121,6 @@ namespace Oxide.Plugins
                     OpenVoting();
                     return;
                 }
-                Puts($"{Climate.GetFog(player.transform.position)}");
             }
 
             fogCheckTimer = timer.Once(configData.FogCheckInterval, () => CheckCurrentFog());
