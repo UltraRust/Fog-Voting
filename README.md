@@ -16,3 +16,5 @@ Every 60.0 seconds the plugins check the fog in the game. If the value is 0.3 th
 Admin can also use commands:
 /setfog - to set fog value directly (0.0 - 1.0)
 /checkfog - to run the fog value check instantly
+
+Join discord https://discord.gg/NczmeTg to keep in touch about updates and new free plugins
