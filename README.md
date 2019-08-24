@@ -18,3 +18,5 @@ Admin can also use commands:
 * /checkfog - to run the fog value check instantly
 
 Join discord https://discord.gg/NczmeTg to keep in touch about updates and new free plugins
+
+![](http://i.imgur.com/JPJQvM1.jpg)
